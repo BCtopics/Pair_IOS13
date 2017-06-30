@@ -44,7 +44,7 @@ class PersonController {
     func saveRandom() {
         
         people.random()
-        saveToPersistentStore()
+        saveToPersistentStore() //FIXME: - This doesn't have any effect?
     }
     
     func fetchPeople() {
@@ -54,6 +54,7 @@ class PersonController {
     }
     
     func group(People: [Person]) -> [[Person]] {
+        
         let split = 2
         let groupedPeople = stride(from: 0, to: People.count, by: split).map { Array(People[$0..<min($0 + split, People.count)]) }
         return groupedPeople
@@ -61,7 +62,12 @@ class PersonController {
     
     //MARK: - Properties
     
-    var people: [Person] = []
+    var people: [Person] = [] {
+        didSet {
+            saveToPersistentStore() //FIXME: - How do I make it so the people model gets saved in coredata to?
+        }
+    }
+    
     var pairs: [[Person]] {
         return group(People: people)
     }
