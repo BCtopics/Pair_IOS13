@@ -18,7 +18,7 @@ class PersonController {
     //MARK: - Initializers
     
     init() {
-        //FIXMR: - Fetch Stuff here..
+        fetchPeople()
     }
     
     //MARK: - Create, Save, Randomize, Fetch, Group
@@ -27,7 +27,7 @@ class PersonController {
         
         let person = Person(fullName: fullName)
         people.append(person)
-        //FIXME: - Save
+        saveToPersistentStore()
     }
     
     func saveToPersistentStore() {
@@ -43,7 +43,7 @@ class PersonController {
     
     func saveRandom() {
         
-        //FIXME: - randomize the array of people
+        people.random()
         saveToPersistentStore()
     }
     
@@ -53,9 +53,26 @@ class PersonController {
         people = (try? CoreDataStack.context.fetch(request)) ?? []
     }
     
+    func group(People: [Person]) -> [[Person]] {
+        let split = 2
+        let groupedPeople = stride(from: 0, to: People.count, by: split).map { Array(People[$0..<min($0 + split, People.count)]) }
+        return groupedPeople
+    }
     
     //MARK: - Properties
     
     var people: [Person] = []
+    var pairs: [[Person]] {
+        return group(People: people)
+    }
     
+}
+
+//MARK: - Extensions
+
+// This is so that I can call people.random and it will automatically shuffle the array.
+extension Array {
+    mutating func random() {
+        for _ in 0..<30 { sort { (_,_) in arc4random() < arc4random() } } // is 20 a good number? 30?
+    }
 }

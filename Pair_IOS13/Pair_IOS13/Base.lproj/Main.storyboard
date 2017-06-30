@@ -12,7 +12,7 @@
         <!--Capstone Groups-->
         <scene sceneID="HMT-pA-DQq">
             <objects>
-                <tableViewController id="Rva-Tm-U92" sceneMemberID="viewController">
+                <tableViewController id="Rva-Tm-U92" customClass="PersonListTableViewController" customModule="Pair_IOS13" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="LTm-Rf-9jW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,8 +42,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Capstone Groups" id="qyk-DC-Wn7">
-                        <barButtonItem key="leftBarButtonItem" title="Randomize" id="5Zi-t2-z2R"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pcf-jh-bAN"/>
+                        <barButtonItem key="leftBarButtonItem" title="Randomize" id="5Zi-t2-z2R">
+                            <connections>
+                                <action selector="randomizeButtonTapped:" destination="Rva-Tm-U92" id="a99-Ee-WcQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pcf-jh-bAN">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="Rva-Tm-U92" id="1xs-Yu-KHA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQP-Pb-gCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
