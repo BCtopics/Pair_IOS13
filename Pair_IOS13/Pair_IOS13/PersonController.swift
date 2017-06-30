@@ -71,7 +71,6 @@ class PersonController {
     var pairs: [[Person]] {
         return group(People: people)
     }
-    
 }
 
 //MARK: - Extensions

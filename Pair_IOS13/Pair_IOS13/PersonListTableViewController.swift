@@ -9,13 +9,13 @@
 import UIKit
 
 class PersonListTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         if PersonController.shared.people.count % 2 == 0 {
@@ -24,18 +24,19 @@ class PersonListTableViewController: UITableViewController {
             return (PersonController.shared.people.count + 1) / 2 // Adds a new group if more then two people are already in one
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PersonController.shared.pairs[section].count //FIXME: - Double Check This Actually Works With Sections
+        return PersonController.shared.pairs[section].count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
-
+        
         let person = PersonController.shared.pairs[indexPath.section][indexPath.row]
         
         cell.textLabel?.text = person.fullName
-
+        
         return cell
     }
     

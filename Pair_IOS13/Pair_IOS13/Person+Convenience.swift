@@ -15,5 +15,4 @@ extension Person {
         self.init(context: context)
         self.fullName = fullName
     }
-    
 }
