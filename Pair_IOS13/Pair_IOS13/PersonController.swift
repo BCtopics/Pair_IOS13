@@ -44,7 +44,7 @@ class PersonController {
     func saveRandom() {
         
         people.random()
-        saveToPersistentStore() //FIXME: - This doesn't have any effect?
+        saveToPersistentStore()
     }
     
     func fetchPeople() {
@@ -78,6 +78,6 @@ class PersonController {
 // This is so that I can call people.random and it will automatically shuffle the array.
 extension Array {
     mutating func random() {
-        for _ in 0..<30 { sort { (_,_) in arc4random() < arc4random() } } // is 20 a good number? 30?
+        for _ in 0..<30 { sort { (_,_) in arc4random() < arc4random() } }
     }
 }
