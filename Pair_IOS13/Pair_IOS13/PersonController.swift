@@ -64,7 +64,7 @@ class PersonController {
     
     var people: [Person] = [] {
         didSet {
-            saveToPersistentStore() //FIXME: - How do I make it so the people model gets saved in coredata to?
+            saveToPersistentStore()
         }
     }
     
